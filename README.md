@@ -15,4 +15,4 @@ The .NET cryptography system provides robust and flexible way to secure sensitiv
 Cinderblock offers a well structured object layer on top of the .NET cryptography model that attempts to make things like key management, initialization vector creation and password hasing simpler while maintaining good security practices, good performance and object model flexibility.
 
 ### Examples
-[Check the Cinderblock wiki](home) for example usage.
+[Check the Cinderblock wiki](https://github.com/SirkleZero/cinderblock/wiki) for example usage.
