@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinderblock.Examples", "Cinderblock.Examples\Cinderblock.Examples.csproj", "{BC091FD0-C02E-4B9B-9777-5FC9FDC72EAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{826834A2-8D9C-49F1-99A0-74A9F2D9B919}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{826834A2-8D9C-49F1-99A0-74A9F2D9B919}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{826834A2-8D9C-49F1-99A0-74A9F2D9B919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC091FD0-C02E-4B9B-9777-5FC9FDC72EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC091FD0-C02E-4B9B-9777-5FC9FDC72EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC091FD0-C02E-4B9B-9777-5FC9FDC72EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC091FD0-C02E-4B9B-9777-5FC9FDC72EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
