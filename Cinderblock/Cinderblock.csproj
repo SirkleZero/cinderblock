@@ -76,6 +76,7 @@
     <Compile Include="Security\Payload.cs" />
     <Compile Include="Security\RijndaelCryptoProvider.cs" />
     <Compile Include="Security\SecuredData.cs" />
+    <Compile Include="Security\SecuredPassword.cs" />
     <Compile Include="Security\VisualStudioSymmetricKeyRepository.cs" />
     <Compile Include="Security\SymmetricKey.cs" />
   </ItemGroup>
