@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Cinderblock</id>
+    <version>$version$</version>
+    <title>Cinderblock</title>
+    <authors>Joshua Gall</authors>
+    <owners>Joshua Gall</owners>
+    <licenseUrl>https://github.com/SirkleZero/cinderblock/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SirkleZero/cinderblock</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>A lean object oriented framework for .NET</summary>
+    <description>Cinderblock is a simple framework designed to provide object model consistency and other useful functionality commonly used in modern software applications.</description>
+    <releaseNotes>https://github.com/SirkleZero/cinderblock/wiki/release-notes</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags></tags>
+  </metadata>
+</package>

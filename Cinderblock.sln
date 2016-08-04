@@ -12,6 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinderblock.Examples", "Cinderblock.Examples\Cinderblock.Examples.csproj", "{BC091FD0-C02E-4B9B-9777-5FC9FDC72EAF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{1F7B07AA-63D5-494A-A9F2-E07355F81C6F}"
+	ProjectSection(SolutionItems) = preProject
+		Cinderblock\Cinderblock.nuspec = Cinderblock\Cinderblock.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F7B07AA-63D5-494A-A9F2-E07355F81C6F} = {F0495831-7BF0-4367-8B32-5064080F58C3}
 	EndGlobalSection
 EndGlobal
