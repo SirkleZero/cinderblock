@@ -89,6 +89,7 @@
     /// <typeparam name="T1">The generic type used for the first argument to parameterize the command.</typeparam>
     /// <typeparam name="T2">The generic type used for the second argument to parameterize the command.</typeparam>
     /// <typeparam name="T3">The generic type used for the third argument to parameterize the command.</typeparam>
+    /// <typeparam name="T4">The generic type used for the fourth argument to parameterize the command.</typeparam>
     public interface IParameterizedCommand<T1, T2, T3, T4>
     {
         /// <summary>

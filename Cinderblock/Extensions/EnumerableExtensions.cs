@@ -12,11 +12,11 @@ namespace System.Collections.Generic
         /// <summary>
         /// Cycles through a collection of items and wraps the item with descriptive generic typed meta information or functionality.
         /// </summary>
-        /// <typeparam name="T">The type of generic <see cref="{T}"/> being wrapped.</typeparam>
-        /// <typeparam name="TIdentifier">The type of generic <see cref="{TIdentifier}"/> that represents the meta information type wrapping the target.</typeparam>
-        /// <param name="items">The <see cref="IEnumerable{T}"/> that will be cycled through.</param>
+        /// <typeparam name="T">The type of generic <see cref="T:{T}"/> being wrapped.</typeparam>
+        /// <typeparam name="TIdentifier">The type of generic <see cref="T:{TIdentifier}"/> that represents the meta information type wrapping the target.</typeparam>
+        /// <param name="items">The <see cref="T:IEnumerable{T}"/> that will be cycled through.</param>
         /// <param name="identifiers">The array of parameters that will be attached as meta information or functionality to the enumerated objects.</param>
-        /// <returns>An <see cref="IEnumerable{ICycledItem{T, TIdentifier}}"/> that contains the original wrapped items, as well as the meta information or functionality.</returns>
+        /// <returns>An <see cref="T:IEnumerable{ICycledItem{T, TIdentifier}}"/> that contains the original wrapped items, as well as the meta information or functionality.</returns>
         public static IEnumerable<ICycledItem<T, TIdentifier>> Cycle<T, TIdentifier>(this IEnumerable<T> items, params TIdentifier[] identifiers)
         {
             // turn this into an array if it isn't already.  we need to avoid unnecessary conversion.

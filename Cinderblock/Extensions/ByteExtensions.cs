@@ -2,6 +2,9 @@
 
 namespace System
 {
+    /// <summary>
+    /// An extension method class that extends the <see cref="byte"/> type.
+    /// </summary>
     public static class ByteExtensions
     {
         [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]

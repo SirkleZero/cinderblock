@@ -156,8 +156,8 @@
         /// Generates a cryptographically random <see cref="System.Double"/> value.
         /// </summary>
         /// <param name="rg">The <see cref="System.Security.Cryptography.RNGCryptoServiceProvider"/> to use.</param>
-        /// <param name="minValue">The minimum value to use as a random number.</param>
-        /// <param name="maxValue">The maximum value to use as a random number.</param>
+        /// <param name="minimum">The minimum value to use as a random number.</param>
+        /// <param name="maximum">The maximum value to use as a random number.</param>
         /// <returns>A cryptographically random numeric value.</returns>
         public static double NextDouble(this RNGCryptoServiceProvider rg, double minimum, double maximum)
         {

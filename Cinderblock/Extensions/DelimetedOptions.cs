@@ -1,7 +1,7 @@
 ﻿namespace System.Collections.Generic
 {
     /// <summary>
-    /// An object that provides optional configuration information for <see cref="IEnumerable{T}.ToDelimetedFile{T}"/>.
+    /// An object that provides optional configuration information for <see cref="T:IEnumerable{T}.ToDelimetedFile{T}"/>.
     /// </summary>
     public sealed class DelimetedOptions
     {

@@ -10,7 +10,7 @@ namespace Cinderblock.Caching
     public sealed class HttpCache : ICache
     {
         /// <summary>
-        /// 	<para>Initializes an instance of the <see cref="WebCacheProxy"/> class.</para>
+        /// 	<para>Initializes an instance of the <see cref="HttpCache"/> class.</para>
         /// </summary>
         public HttpCache() { }
 

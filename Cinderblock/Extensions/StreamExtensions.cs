@@ -6,10 +6,10 @@
     public static class StreamExtensions
     {
         /// <summary>
-        /// Reads all of the bytes of a <see cref="System.IO.BinaryReader"/> object into a <see cref="System.Byte[]"/>.
+        /// Reads all of the bytes of a <see cref="BinaryReader"/> object into a <see cref="T:byte[]"/>.
         /// </summary>
-        /// <param name="reader">The <see cref="System.IO.BinaryReader"/> to read from.</param>
-        /// <returns>A <see cref="System.Byte[]"/> containing the data of the <see cref="System.IO.BinaryReader"/>.</returns>
+        /// <param name="reader">The <see cref="BinaryReader"/> to read from.</param>
+        /// <returns>A <see cref="T:byte[]"/> containing the data of the <see cref="BinaryReader"/>.</returns>
         public static byte[] ReadAllBytes(this BinaryReader reader)
         {
             const int bufferSize = 4096;

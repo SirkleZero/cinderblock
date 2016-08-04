@@ -24,18 +24,18 @@ namespace System
         /// <summary>
         /// Performs a deep copy of an object.
         /// </summary>
-        /// <param name="originalObject">The object to copy.</param>
+        /// <param name="original">The object to copy.</param>
         /// <returns>The new instance of the original object.</returns>
-        public static Object Copy(this Object originalObject)
+        public static Object Copy(this Object original)
         {
-            return InternalCopy(originalObject, new Dictionary<Object, Object>(new ReferenceEqualityComparer()));
+            return InternalCopy(original, new Dictionary<Object, Object>(new ReferenceEqualityComparer()));
         }
 
         /// <summary>
         /// Performs a deep copy of an object.
         /// </summary>
-        /// <typeparam name="T">the <see cref="System.Type"/> of the object to be copied.</typeparam>
-        /// <param name="originalObject">The object to copy.</param>
+        /// <typeparam name="T">the <see cref="Type"/> of the object to be copied.</typeparam>
+        /// <param name="original">The object to copy.</param>
         /// <returns>The new instance of the original object.</returns>
         public static T Copy<T>(this T original)
         {

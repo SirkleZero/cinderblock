@@ -1,9 +1,13 @@
 ﻿using System.Data;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Threading;
 
 namespace System
 {
+    /// <summary>
+    /// An extension method class that extends the <see cref="DateTime"/> type.
+    /// </summary>
     public static class DateTimeExtensions
     {
         /// <summary>

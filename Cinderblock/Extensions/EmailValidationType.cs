@@ -6,11 +6,11 @@
     public enum EmailValidationType
     {
         /// <summary>
-        /// Represents a regular expression that looks like \w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*
+        /// Represents a regular expression that implements a linient email comparison.
         /// </summary>
         Lenient,
         /// <summary>
-        /// Represents a regular expression that looks like ^(([^<>()[\]\\.,;:\s@\""]+(\.[^<>()[\]\\.,;:\s@\""]+)*)|(\"".+\""))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$
+        /// Represents a regular expression that implements a strict email comparison.
         /// </summary>
         Strict
     }
