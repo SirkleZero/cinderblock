@@ -1,5 +1,7 @@
 ﻿using System;
 using StackExchange.Redis;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace Cinderblock.Caching
 {
@@ -90,6 +92,7 @@ namespace Cinderblock.Caching
             }
 
             var cache = this.connection.GetDatabase();
+            cache.KeyExpire("", cacheDuration);
             //HttpRuntime.Cache.Add(key, item, null, System.Web.Caching.Cache.NoAbsoluteExpiration, cacheDuration, CacheItemPriority.Normal, null);
         }
 
