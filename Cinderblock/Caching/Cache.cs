@@ -2,6 +2,9 @@
 
 namespace Cinderblock.Caching
 {
+    /// <summary>
+    /// Provides an abstract class for Caching objects to inherit.
+    /// </summary>
     public abstract class Cache : ICache
     {
         /// <summary>
