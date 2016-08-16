@@ -1,9 +1,47 @@
 ﻿using System;
+using StackExchange.Redis;
 
 namespace Cinderblock.Caching
 {
+    /// <summary>
+    /// Provides an interfacace to the Azure Redis Cache service.
+    /// </summary>
     public sealed class AzureRedisCache : Cache
     {
+        private readonly ConnectionMultiplexer connection;
+
+        /// <summary>
+        /// Creates an instance of the <see cref="AzureRedisCache"/> object.
+        /// </summary>
+        /// <param name="connection">The <see cref="ConnectionMultiplexer"/> instance that will be used to 
+        /// connect to and manage the cache.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// 	<para>The argument <paramref name="connection"/> is <langword name="null"/>.</para>
+        /// </exception>
+        public AzureRedisCache(ConnectionMultiplexer connection)
+        {
+            if(connection == null)
+            {
+                throw new ArgumentNullException("connection");
+            }
+
+            this.connection = connection;
+        }
+
+        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+        {
+            return ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+        });
+
+        public static ConnectionMultiplexer Connection
+        {
+            get
+            {
+                return lazyConnection.Value;
+            }
+        }
+
         /// <summary>
         /// Adds an item to the cache using the default sliding cache duration for the application.
         /// </summary>
@@ -18,7 +56,7 @@ namespace Cinderblock.Caching
         /// </exception>
         public override void Add<T>(string key, T item)
         {
-            
+            this.Add(key, item, TimeSpan.FromMinutes(30));
         }
 
         /// <summary>
@@ -38,7 +76,21 @@ namespace Cinderblock.Caching
         /// </exception>
         public override void Add<T>(string key, T item, TimeSpan cacheDuration)
         {
-            
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentOutOfRangeException("key");
+            }
+            if (cacheDuration.Equals(TimeSpan.Zero))
+            {
+                throw new ArgumentOutOfRangeException("cacheDuration");
+            }
+
+            var cache = this.connection.GetDatabase();
+            //HttpRuntime.Cache.Add(key, item, null, System.Web.Caching.Cache.NoAbsoluteExpiration, cacheDuration, CacheItemPriority.Normal, null);
         }
 
         /// <summary>
@@ -58,7 +110,21 @@ namespace Cinderblock.Caching
         /// </exception>
         public override void Add<T>(string key, T item, DateTime absoluteExpiration)
         {
-            
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentOutOfRangeException("key");
+            }
+            if (absoluteExpiration < DateTime.Now)
+            {
+                throw new ArgumentOutOfRangeException("absoluteExpiration");
+            }
+
+            var cache = this.connection.GetDatabase();
+            //HttpRuntime.Cache.Add(key, item, null, absoluteExpiration, System.Web.Caching.Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
         }
 
         /// <summary>
@@ -71,7 +137,14 @@ namespace Cinderblock.Caching
         /// </exception>
         public override bool Exists(string key)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentOutOfRangeException("key");
+            }
+
+            var cache = this.connection.GetDatabase();
             return false;
+            //return HttpRuntime.Cache[key] != null;
         }
 
         /// <summary>
@@ -83,7 +156,13 @@ namespace Cinderblock.Caching
         /// </exception>
         public override void Remove(string key)
         {
-            
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentOutOfRangeException("key");
+            }
+
+            var cache = this.connection.GetDatabase();
+            //HttpRuntime.Cache.Remove(key);
         }
 
         /// <summary>
@@ -100,8 +179,30 @@ namespace Cinderblock.Caching
         /// </exception>
         public override bool TryGetValue<T>(string key, out T value)
         {
-            value = default(T);
-            return false;
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentOutOfRangeException("key");
+            }
+
+            try
+            {
+                if (!this.Exists(key))
+                {
+                    value = default(T);
+                    return false;
+                }
+
+                var cache = this.connection.GetDatabase();
+                //value = (T)HttpRuntime.Cache[key];
+                value = default(T); // just for scaffolding!
+            }
+            catch
+            {
+                value = default(T);
+                return false;
+            }
+
+            return true;
         }
     }
 }
