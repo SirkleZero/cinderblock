@@ -7,7 +7,7 @@ namespace Cinderblock.Caching
     /// <summary>
     /// Represents a simplified interface to the intrinsic HttpRuntime.Cache system.
     /// </summary>
-    public sealed class HttpCache : ICache
+    public sealed class HttpCache : Cache
     {
         /// <summary>
         /// 	<para>Initializes an instance of the <see cref="HttpCache"/> class.</para>
@@ -26,7 +26,7 @@ namespace Cinderblock.Caching
         /// <exception cref="ArgumentOutOfRangeException">
         /// 	<para>The argument <paramref name="key"/> is out of range.</para>
         /// </exception>
-        public void Add<T>(string key, T item)
+        public override void Add<T>(string key, T item)
         {
             this.Add(key, item, TimeSpan.FromMinutes(30));
         }
@@ -46,7 +46,7 @@ namespace Cinderblock.Caching
         /// 	<para>-or-</para>
         /// 	<para>The argument <paramref name="cacheDuration"/> is out of range.</para>
         /// </exception>
-        public void Add<T>(string key, T item, TimeSpan cacheDuration)
+        public override void Add<T>(string key, T item, TimeSpan cacheDuration)
         {
             if (item == null)
             {
@@ -61,7 +61,7 @@ namespace Cinderblock.Caching
                 throw new ArgumentOutOfRangeException("cacheDuration");
             }
 
-            HttpRuntime.Cache.Add(key, item, null, Cache.NoAbsoluteExpiration, cacheDuration, CacheItemPriority.Normal, null);
+            HttpRuntime.Cache.Add(key, item, null, System.Web.Caching.Cache.NoAbsoluteExpiration, cacheDuration, CacheItemPriority.Normal, null);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Cinderblock.Caching
         /// 	<para>-or-</para>
         /// 	<para>The argument <paramref name="absoluteExpiration"/> is out of range.</para>
         /// </exception>
-        public void Add<T>(string key, T item, DateTime absoluteExpiration)
+        public override void Add<T>(string key, T item, DateTime absoluteExpiration)
         {
             if (item == null)
             {
@@ -94,7 +94,7 @@ namespace Cinderblock.Caching
                 throw new ArgumentOutOfRangeException("absoluteExpiration");
             }
 
-            HttpRuntime.Cache.Add(key, item, null, absoluteExpiration, Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
+            HttpRuntime.Cache.Add(key, item, null, absoluteExpiration, System.Web.Caching.Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Cinderblock.Caching
         /// <exception cref="ArgumentOutOfRangeException">
         /// 	<para>The argument <paramref name="key"/> is out of range.</para>
         /// </exception>
-        public void Remove(string key)
+        public override void Remove(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -122,7 +122,7 @@ namespace Cinderblock.Caching
         /// <exception cref="ArgumentOutOfRangeException">
         /// 	<para>The argument <paramref name="key"/> is out of range.</para>
         /// </exception>
-        public bool Exists(string key)
+        public override bool Exists(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -144,7 +144,7 @@ namespace Cinderblock.Caching
         /// <exception cref="ArgumentOutOfRangeException">
         /// 	<para>The argument <paramref name="key"/> is out of range.</para>
         /// </exception>
-        public bool TryGetValue<T>(string key, out T value)
+        public override bool TryGetValue<T>(string key, out T value)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -167,59 +167,6 @@ namespace Cinderblock.Caching
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// Creates a <see cref="Type"/> safe key that can be used to uniquely identify cached items.
-        /// </summary>
-        /// <typeparam name="T">The generic <see cref="Type"/> of the object.</typeparam>
-        /// <param name="value">The object to generate a type safe key for.</param>
-        /// <param name="key">The key that uniquely identifies the object.</param>
-        /// <returns>A unique key based on the object type and object unique identifier.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// 	<para>The argument <paramref name="value"/> is <langword name="null"/>.</para>
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// 	<para>The argument <paramref name="key"/> is out of range.</para>
-        /// </exception>
-        public string CreateTypesafeKey<T>(T value, string key)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException("value");
-            }
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new ArgumentOutOfRangeException("key");
-            }
-
-            return this.CreateTypesafeKey(value.GetType(), key);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="Type"/> safe key that can be used to uniquely identify cached items.
-        /// </summary>
-        /// <param name="t">The <see cref="Type"/> to generate a key for.</param>
-        /// <param name="key">The key that uniquely identifies the object.</param>
-        /// <returns>A unique key based on the object type and object unique identifier.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// 	<para>The argument <paramref name="t"/> is <langword name="null"/>.</para>
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// 	<para>The argument <paramref name="key"/> is out of range.</para>
-        /// </exception>
-        public string CreateTypesafeKey(Type t, string key)
-        {
-            if (t == null)
-            {
-                throw new ArgumentNullException("t");
-            }
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new ArgumentOutOfRangeException("key");
-            }
-
-            return string.Concat(t.ToString(), "_", key);
         }
     }
 }

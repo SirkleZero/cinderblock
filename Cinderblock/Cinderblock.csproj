@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\AzureRedisCache.cs" />
+    <Compile Include="Caching\Cache.cs" />
     <Compile Include="Caching\HttpCache.cs" />
     <Compile Include="Caching\ICache.cs" />
     <Compile Include="Extensions\ByteExtensions.cs" />
